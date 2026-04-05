@@ -31,7 +31,7 @@ export default function page() {
   return (
     <main className="flex flex-col min-h-screen bg-white overflow-x-hidden">
       <Hero />
-      <SponsorsSection />
+      {/* <SponsorsSection /> */}
       <JoiningRequirements />
       <IncreaseIncome />
       <JoinSteps />

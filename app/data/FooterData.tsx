@@ -64,8 +64,8 @@ export const CONTACT_INFO = [
   },
   {
     icon: "/icons/Mail.svg",
-    text: "drobi-sa@drobi-sa.com",
-    href: "mailto:drobi-sa@drobi-sa.com",
+    text: "info@drobi.sa",
+    href: "mailto:info@drobi.sa",
     isLtr: true,
   },
 ];

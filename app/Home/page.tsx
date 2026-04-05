@@ -26,9 +26,9 @@ export default function Home() {
       <div id="contact" className="w-full">
         <ContactSection />
       </div>
-      <div id="sponsors" className="w-full">
+      {/* <div id="sponsors" className="w-full">
         <SponsorsSection />
-      </div>
+      </div> */}
       <div id="faq" className="w-full">
         <FAQSection />
       </div>

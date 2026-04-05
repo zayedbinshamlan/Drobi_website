@@ -8,6 +8,6 @@ export const NAV_LINKS = [
 
 export const MORE_LINKS = [
   { name: "تواصل معنا", href: "/#contact" },
-  { name: "شركاء النجاح", href: "/#sponsors" },
+  // { name: "شركاء النجاح", href: "/#sponsors" },
   { name: "الأسئلة الشائعة", href: "/#faq" },
 ];
