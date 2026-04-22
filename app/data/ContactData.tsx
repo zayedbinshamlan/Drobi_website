@@ -2,7 +2,7 @@ export const SOCIAL_ICONS = [
   {
     name: "تواصل معنا مباشرة",
     src: "/icons/whatsapp.svg",
-    href: "https://wa.me/966558686141",
+    href: "https://wa.me/966920018162",
   },
   {
     name: "انضم لعائلة دروبي",
