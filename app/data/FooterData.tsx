@@ -2,7 +2,7 @@ export const SOCIAL_MEDIA = [
   {
     name: "تواصل معنا مباشرة",
     src: "/icons/whatsapp.svg",
-    href: "https://wa.me/966558686141",
+    href: "https://wa.me/966920018162",
   },
   {
     name: "انضم لعائلة دروبي",
@@ -58,14 +58,14 @@ export const CONTACT_INFO = [
   },
   {
     icon: "/icons/phone.svg",
-    text: "+966 55 868 6141",
-    href: "tel:+966558686141",
+    text: "+966 920 018 162",
+    href: "https://wa.me/966920018162",
     isLtr: true,
   },
   {
     icon: "/icons/Mail.svg",
-    text: "info@drobi.sa",
-    href: "mailto:info@drobi.sa",
+    text: "drobi-sa@drobi-sa.com",
+    href: "mailto:drobi-sa@drobi-sa.com",
     isLtr: true,
   },
 ];
