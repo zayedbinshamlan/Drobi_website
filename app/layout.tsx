@@ -107,11 +107,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "دروبي | تطبيق توصيل ومشاوير في السعودية",
     description: "تطبيق التنقل الأفضل في منطقتك - خيارات أكثر وأمان أعلى.",
-    url: "https://drobi-sa.com",
+    url: "https://drobi.sa",
     siteName: "Drobi",
     images: [
       {
-        url: "https://drobi-sa.com/icons/og-banner.png",  
+        url: "https://drobi.sa/icons/og-banner.png",  
         width: 1200,
         height: 630,
         alt: "Drobi - Safe and Fast Rides",
@@ -126,7 +126,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "دروبي | Drobi",
     description: "تطبيق التنقل الأفضل في منطقتك. حمل التطبيق الآن وانطلق.",
-    images: ["https://drobi-sa.com/icons/og-banner.png"], 
+    images: ["https://drobi.sa/icons/og-banner.png"], 
   },  /* Robots and Canonical Links */
   robots: {
     index: true,
