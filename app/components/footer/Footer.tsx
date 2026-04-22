@@ -189,6 +189,8 @@ export default function Footer() {
                         <div className="flex items-center gap-2">
                           <a
                             href={info.href}
+                             rel="noopener noreferrer"
+                              target="_blank"
                             dir={info.isLtr ? "ltr" : "rtl"}
                             onClick={() =>
                               handleEmailCopy(info.href, info.text)
