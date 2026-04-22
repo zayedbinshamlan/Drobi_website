@@ -111,7 +111,7 @@ export const metadata: Metadata = {
     siteName: "Drobi",
     images: [
       {
-        url: "/icons/favicon-96x96.png",
+        url: "/icons/og-banner.png",
         width: 1200,
         height: 630,
         alt: "Drobi - Safe and Fast Rides",
@@ -126,9 +126,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "دروبي | Drobi",
     description: "تطبيق التنقل الأفضل في منطقتك. حمل التطبيق الآن وانطلق.",
-    images: ["/icons/favicon-96x96.png"],
+    images: ["/icons/og-banner.png"],
   },
-
   /* Robots and Canonical Links */
   robots: {
     index: true,
