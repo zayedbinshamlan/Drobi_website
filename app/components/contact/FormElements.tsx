@@ -11,6 +11,10 @@ interface FormInputProps {
   label: string;
   type: string;
   placeholder: string;
+  name: string; // أضفنا هذا
+  required?: boolean; // أضفنا هذا
+  value: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 /**
@@ -22,20 +26,26 @@ interface FormInputProps {
  * - Thematic Coloring: Uses the brand's soft violet (#EFE8FD) to maintain visual harmony.
  * * @component
  */
-export const FormField = ({ label, type, placeholder }: FormInputProps) => (
+export const FormField = ({
+  label,
+  type,
+  placeholder,
+  name,
+  required = false,
+  value,
+  onChange,
+}: FormInputProps) => (
   <div className="relative w-full lg:w-[410.74px]">
-    {/* Floating Badge Label: Positioned to overlap the top border */}
     <label className="absolute -top-3 right-4 bg-[#EFE8FD] px-2 text-[#414651] text-[12px] font-normal rounded-sm z-20 border border-[#E9EAEB]">
       {label}
     </label>
     <input
+      name={name} // ضروري لـ FormData
       type={type}
+      required={required}
       placeholder={placeholder}
-      /**
-       * Input Styling:
-       * - focus:ring-1: Provides a subtle glow upon user interaction.
-       * - placeholder:text-[#390D8E]/40: Low-opacity brand color for hints.
-       */
+      value={value}
+      onChange={onChange}
       className="w-full h-[53.99px] bg-[#EFE8FD] border-[0.96px] border-[#E9EAEB] rounded-xl p-3 text-[#414651] placeholder:text-[#390D8E]/40 focus:outline-none focus:ring-1 focus:ring-white/30 transition-all"
     />
   </div>
@@ -51,18 +61,29 @@ export const FormField = ({ label, type, placeholder }: FormInputProps) => (
 export const FormTextArea = ({
   label,
   placeholder,
+  name,
+  required = false,
+  value,
+  onChange,
 }: {
   label: string;
   placeholder: string;
+  name: string;
+  required?: boolean;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }) => (
   <div className="relative w-full lg:w-[410.74px]">
-    {/* Consistent Label Badge Styling */}
     <label className="absolute -top-3 right-4 bg-[#EFE8FD] px-2 text-[#414651] text-[12px] font-normal rounded-sm z-20 border border-[#E9EAEB]">
       {label}
     </label>
     <textarea
+      name={name}
+      required={required}
       rows={4}
       placeholder={placeholder}
+      value={value}
+      onChange={onChange}
       className="w-full bg-[#EFE8FD] border-[0.96px] border-[#E9EAEB] rounded-xl p-3 text-[#390D8E] placeholder:text-[#390D8E]/40 focus:outline-none focus:ring-1 focus:ring-white/30 transition-all resize-none"
     />
   </div>
@@ -79,20 +100,54 @@ export const FormTextArea = ({
  * - Multi-layer Shadows: Combines standard depth with a brand-colored glow (boxShadow).
  * * @component
  */
-export const SubmitButton = () => (
+export const SubmitButton = ({ disabled = false }: { disabled?: boolean }) => (
   <button
     type="submit"
-    className="w-52.75 h-12 flex items-center justify-center gap-2 pt-3 pr-8 pb-3 pl-8 rounded-3xl text-[#390D8E] font-bold text-[16px] whitespace-nowrap transition-all duration-300 hover:scale-105 active:scale-95 group"
+    disabled={disabled}
+    aria-busy={disabled}
+    className={`w-52.75 h-12 flex items-center cursor-pointer justify-center gap-2 px-8 rounded-3xl text-[#390D8E] font-bold text-[16px] transition-all duration-300 group ${
+      disabled
+        ? "opacity-70 cursor-not-allowed"
+        : "hover:scale-105 active:scale-95"
+    }`}
     style={{
       background: "linear-gradient(264.56deg, #EFE8FD 14%, #9F73F4 142.99%)",
       boxShadow:
         "0px 0px 4px 0px rgba(0, 0, 0, 0.10), 0px 0px 8px 0px rgba(239, 232, 253, 0.6)",
     }}
   >
-    ارسل طلبك الآن
-    {/* Staggered Arrow Animation triggered by parent hover (group) */}
-    <span className="group-hover:-translate-x-1 transition-transform text-xl">
-      ←
-    </span>
+    {disabled ? (
+      <>
+        {/* أيقونة الدوران (Spinner) */}
+        <svg
+          className="animate-spin h-5 w-5 text-[#390D8E]"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            className="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            strokeWidth="4"
+          ></circle>
+          <path
+            className="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+          ></path>
+        </svg>
+        <span>جاري الإرسال...</span>
+      </>
+    ) : (
+      <>
+        <span>ارسل طلبك الآن</span>
+        <span className="group-hover:-translate-x-1 transition-transform text-xl">
+          ←
+        </span>
+      </>
+    )}
   </button>
 );

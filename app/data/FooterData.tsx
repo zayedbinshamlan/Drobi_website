@@ -2,7 +2,7 @@ export const SOCIAL_MEDIA = [
   {
     name: "تواصل معنا مباشرة",
     src: "/icons/whatsapp.svg",
-    href: "https://wa.me/966558686141",
+    href: "https://wa.me/966920018162",
   },
   {
     name: "انضم لعائلة دروبي",
@@ -45,8 +45,8 @@ export const QUICK_LINKS = [
 ];
 
 export const LEGAL_LINKS = [
-  { name: "سياسة الخصوصية", href: "/#privacy" },
-  { name: "شروط الإستخدام", href: "/#terms" },
+  { name: "سياسة الخصوصية", href: "/privacy" },
+  { name: "شروط الإستخدام", href: "/terms" },
   { name: "حقوق الراكب", href: "/#rights" },
 ];
 
@@ -58,8 +58,8 @@ export const CONTACT_INFO = [
   },
   {
     icon: "/icons/phone.svg",
-    text: "+966 55 868 6141",
-    href: "tel:+966558686141",
+    text: "+966 920 018 162",
+    href: "https://wa.me/966920018162",
     isLtr: true,
   },
   {

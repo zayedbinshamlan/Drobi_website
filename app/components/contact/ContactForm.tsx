@@ -1,81 +1,116 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
   FormField,
   FormTextArea,
   SubmitButton,
 } from "@/app/components/contact/FormElements";
+import { sendEmail } from "@/app/actions/sendEmail";
 
-/**
- * ContactForm Component
- * * A high-fidelity lead generation form for user inquiries.
- * Features:
- * - Brand-Centric Aesthetic: Implements a deep violet gradient (linear-to-br) with semi-transparent overlays.
- * - Glassmorphism Accents: Uses high-radius corners (50px) and backdrop-aware coloring for a modern UI.
- * - Modular Construction: Orchestrates specialized form fields (FormField, FormTextArea) for consistent data entry.
- * - Responsive Sizing: Precisely tuned for desktop (lg:w-117.75) and full-width mobile views.
- * * @component
- */
+// 1. تحديث نوع الحالة ليشمل الأخطاء
+type FormStatus = {
+  success: boolean;
+  message: string;
+  errors?: {
+    name?: string[];
+    email?: string[];
+    message?: string[];
+  };
+};
+
 export default function ContactForm() {
+  const [status, setStatus] = useState<FormStatus | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  
+  const handleSubmit = async (formDataInstance: FormData) => {
+    setIsLoading(true);
+    setStatus(null);
+
+    const result = await sendEmail(formDataInstance);
+
+    setStatus(result);
+    setIsLoading(false);
+
+    // تصفير الحقول فقط في حال النجاح
+    if (result.success) {
+      setFormData({ name: "", email: "", message: "" });
+    }
+  };
   return (
     <div
-      /**
-       * Root Form Container:
-       * - bg-linear-to-br: Creates a sophisticated diagonal transition from transparent-violet to solid-violet.
-       * - shadow-2xl: Provides strong elevation to separate the form from the background patterns.
-       */
       className="relative flex flex-col w-full lg:w-117.75 lg:min-h-171 overflow-hidden rounded-[50px] shadow-2xl px-8 py-10 lg:px-10 lg:py-11 gap-12 bg-linear-to-br from-[#390D8E]/50 to-[#390D8E]"
       dir="rtl"
     >
-      {/* =========================================
-         1. Header Section (Context & Greeting)
-         ========================================= 
-         Sets the tone for user interaction with high-contrast typography and supportive subtext.
-      */}
       <div className="relative z-10 flex flex-col gap-2">
         <h2 className="text-3xl font-bold text-white">أرسل لنا رسالة</h2>
-        {/* Supporting text with a lighter violet hue for visual hierarchy */}
         <p className="text-[#CBB0FF]">يسعدنا تواصلك معنا</p>
       </div>
 
-      {/* =========================================
-         2. Interactive Form Section
-         ========================================= 
-         Logic: Uses a column flex layout with space-y-8 to maintain vertical rhythm.
-         Note: e.preventDefault() is currently handling submissions for client-side validation logic.
-      */}
       <form
-        onSubmit={(e) => e.preventDefault()}
-        className="relative z-10 flex flex-col flex-1 items-start space-y-8"
+        action={handleSubmit}
+        className="relative z-10 flex flex-col flex-1 items-start space-y-7"
       >
-        {/* Identity Input: Full Name with customized placeholder */}
         <FormField
+          name="name"
           label="الاسم بالكامل"
           type="text"
           placeholder="أدخل اسمك بالكامل"
+          value={formData.name}
+          onChange={handleChange}
         />
+        {/* عرض خطأ الاسم */}
+        {status?.errors?.name && (
+          <p className="text-red-300 text-xs">{status.errors.name[0]}</p>
+        )}
 
-        {/* Communication Input: Email address with standard validation attributes */}
         <FormField
+          name="email"
           label="الإيميل"
           type="email"
           placeholder="أدخل بريدك الإلكتروني"
+          value={formData.email}
+          onChange={handleChange}
         />
+        {/* عرض خطأ الإيميل */}
+        {status?.errors?.email && (
+          <p className="text-red-300 text-xs">{status.errors.email[0]}</p>
+        )}
 
-        {/* Narrative Input: Detailed message area for multi-line user feedback */}
-        <FormTextArea label="كيف يمكننا مساعدتك" placeholder="أدخل رسالتك..." />
+        <FormTextArea
+          name="message"
+          label="كيف يمكننا مساعدتك"
+          placeholder="أدخل رسالتك..."
+          value={formData.message}
+          onChange={handleChange}
+        />
+        {/* عرض خطأ الرسالة */}
+        {status?.errors?.message && (
+          <p className="text-red-300 text-xs">{status.errors.message[0]}</p>
+        )}
 
-        {/* =========================================
-           3. Action & Assurance Section
-           ========================================= 
-           Includes the submission trigger and a supporting "SLA" notice (Response time).
-        */}
         <div className="flex flex-col items-start w-full gap-8 mt-auto">
-          {/* Customized Primary Action Button */}
-          <SubmitButton />
+          <SubmitButton disabled={isLoading} />
 
-          {/* Trust Element: Reassuring the user with an expected response time frame */}
+          {/* رسالة النجاح أو الخطأ العام */}
+          {status && (
+            <p
+              className={`text-sm ${status.success ? "text-green-300" : "text-red-300"}`}
+            >
+              {status.message}
+            </p>
+          )}
+
           <p className="pr-4 text-sm font-normal text-white opacity-90">
             عادةً نرد خلال 24 ساعة
           </p>
