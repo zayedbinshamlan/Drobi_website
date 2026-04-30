@@ -6,53 +6,22 @@ import localFont from "next/font/local";
 
 const honorSans = localFont({
   src: [
-    {
-      path: "../public/fonts/HONORSansArabicUI-T.ttf", // Thin
-      weight: "100",
-    },
-    {
-      path: "../public/fonts/HONORSansArabicUI-EL.ttf", // Extra Light
-      weight: "200",
-    },
-    {
-      path: "../public/fonts/HONORSansArabicUI-L.ttf", // Light
-      weight: "300",
-    },
-    {
-      path: "../public/fonts/HONORSansArabicUI-R.ttf", // Regular
-      weight: "400",
-    },
-    {
-      path: "../public/fonts/HONORSansArabicUI-M.ttf", // Medium
-      weight: "500",
-    },
-    {
-      path: "../public/fonts/HONORSansArabicUI-DB.ttf", // Demi Bold
-      weight: "600",
-    },
-    {
-      path: "../public/fonts/HONORSansArabicUI-B.ttf", // Bold
-      weight: "700",
-    },
-    {
-      path: "../public/fonts/HONORSansArabicUI-EB.ttf", // Extra Bold
-      weight: "800",
-    },
-    {
-      path: "../public/fonts/HONORSansArabicUI-H.ttf", // Heavy / Black
-      weight: "900",
-    },
+    { path: "../public/fonts/HONORSansArabicUI-T.ttf", weight: "100" },
+    { path: "../public/fonts/HONORSansArabicUI-EL.ttf", weight: "200" },
+    { path: "../public/fonts/HONORSansArabicUI-L.ttf", weight: "300" },
+    { path: "../public/fonts/HONORSansArabicUI-R.ttf", weight: "400" },
+    { path: "../public/fonts/HONORSansArabicUI-M.ttf", weight: "500" },
+    { path: "../public/fonts/HONORSansArabicUI-DB.ttf", weight: "600" },
+    { path: "../public/fonts/HONORSansArabicUI-B.ttf", weight: "700" },
+    { path: "../public/fonts/HONORSansArabicUI-EB.ttf", weight: "800" },
+    { path: "../public/fonts/HONORSansArabicUI-H.ttf", weight: "900" },
   ],
   variable: "--font-honor",
   display: "swap",
 });
 
-/**
- * Global Metadata Configuration
- * Comprehensive SEO and Branding orchestration.
- */
 export const metadata: Metadata = {
-  metadataBase: new URL("https://drobi-sa.com"),
+  metadataBase: new URL("https://drobi.sa"),
 
   title: {
     default: "دروبي | تطبيق توصيل ومشاوير في السعودية",
@@ -61,6 +30,7 @@ export const metadata: Metadata = {
 
   description:
     "تطبيق دروبي للتوصيل والمشاوير في السعودية. اطلب مشوارك الآن بسرعة وأمان مع أفضل السائقين في منطقتك",
+
   verification: {
     google: "google-site-verification-code",
   },
@@ -81,26 +51,23 @@ export const metadata: Metadata = {
     capable: true,
   },
 
-  /* Branding Icons Strategy */
   icons: {
     icon: [
-      { url: "icons/favicon-96x96.png", sizes: "96x96", type: "image/png" },
-      { url: "icons/favicon.svg", type: "image/svg+xml" },
+      { url: "/icons/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/icons/favicon.svg", type: "image/svg+xml" },
     ],
-    shortcut: "icons/favicon.ico",
+    shortcut: "/icons/favicon.ico",
     apple: [
       {
-        url: "icons/apple-touch-icon.png",
+        url: "/icons/apple-touch-icon.png",
         sizes: "180x180",
         type: "image/png",
       },
     ],
   },
 
-  /* Web Manifest for PWA */
   manifest: "/site.webmanifest",
 
- /* Social Media and Open Graph Integration */
   openGraph: {
     title: "دروبي | تطبيق توصيل ومشاوير في السعودية",
     description: "تطبيق التنقل الأفضل في منطقتك - خيارات أكثر وأمان أعلى.",
@@ -108,11 +75,7 @@ export const metadata: Metadata = {
     siteName: "Drobi",
     images: [
       {
-<<<<<<< HEAD
-        url: "/icons/og-banner.png",
-=======
-        url: "https://drobi.sa/icons/og-banner.png",  
->>>>>>> d30f67ef6716a38b31b71016582967a3a1d25d31
+        url: "https://drobi.sa/icons/og-banner.png",
         width: 1200,
         height: 630,
         alt: "Drobi - Safe and Fast Rides",
@@ -122,20 +85,13 @@ export const metadata: Metadata = {
     type: "website",
   },
 
-  /* Twitter (X) Card Integration */
   twitter: {
     card: "summary_large_image",
     title: "دروبي | Drobi",
     description: "تطبيق التنقل الأفضل في منطقتك. حمل التطبيق الآن وانطلق.",
-<<<<<<< HEAD
-    images: ["/icons/og-banner.png"],
+    images: ["https://drobi.sa/icons/og-banner.png"],
   },
 
-  /* Robots and Canonical Links */
-=======
-    images: ["https://drobi.sa/icons/og-banner.png"], 
-  },  /* Robots and Canonical Links */
->>>>>>> d30f67ef6716a38b31b71016582967a3a1d25d31
   robots: {
     index: true,
     follow: true,
@@ -152,9 +108,6 @@ export const metadata: Metadata = {
   },
 };
 
-/**
- * RootLayout Component
- */
 export default function RootLayout({
   children,
 }: {
@@ -166,9 +119,7 @@ export default function RootLayout({
         className={`${honorSans.className} antialiased min-h-screen flex flex-col`}
       >
         <Navbar />
-
         <main className="grow">{children}</main>
-
         <Footer />
       </body>
     </html>
