@@ -179,12 +179,38 @@ export default function Footer() {
                       height={20}
                     />
 
+<<<<<<< HEAD
                     {info.href ? (
                       <div className="flex items-center gap-2">
                         <a
                           href={info.href}
                           rel="noopener noreferrer"
                           target="_blank"
+=======
+                      {info.href ? (
+                        <div className="flex items-center gap-2">
+                          <a
+                            href={info.href}
+                             rel="noopener noreferrer"
+                              target="_blank"
+                            dir={info.isLtr ? "ltr" : "rtl"}
+                            onClick={() =>
+                              handleEmailCopy(info.href, info.text)
+                            }
+                            className="text-sm font-normal hover:text-white transition-colors duration-300 cursor-pointer"
+                          >
+                            {info.text}
+                          </a>
+
+                          {info.href.startsWith("mailto:") && isEmailCopied && (
+                            <span className="text-[10px] bg-white text-[#26095E] px-2 py-0.5 rounded-full font-bold animate-pulse">
+                              تم النسخ ✔
+                            </span>
+                          )}
+                        </div>
+                      ) : (
+                        <span
+>>>>>>> d30f67ef6716a38b31b71016582967a3a1d25d31
                           dir={info.isLtr ? "ltr" : "rtl"}
                           onClick={() => handleEmailCopy(info.href, info.text)}
                           className="text-sm font-normal hover:text-white transition-colors duration-300 cursor-pointer"

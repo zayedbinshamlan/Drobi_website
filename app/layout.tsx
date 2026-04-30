@@ -100,15 +100,19 @@ export const metadata: Metadata = {
   /* Web Manifest for PWA */
   manifest: "/site.webmanifest",
 
-  /* Social Media and Open Graph Integration */
+ /* Social Media and Open Graph Integration */
   openGraph: {
     title: "دروبي | تطبيق توصيل ومشاوير في السعودية",
     description: "تطبيق التنقل الأفضل في منطقتك - خيارات أكثر وأمان أعلى.",
-    url: "https://drobi-sa.com",
+    url: "https://drobi.sa",
     siteName: "Drobi",
     images: [
       {
+<<<<<<< HEAD
         url: "/icons/og-banner.png",
+=======
+        url: "https://drobi.sa/icons/og-banner.png",  
+>>>>>>> d30f67ef6716a38b31b71016582967a3a1d25d31
         width: 1200,
         height: 630,
         alt: "Drobi - Safe and Fast Rides",
@@ -123,10 +127,15 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "دروبي | Drobi",
     description: "تطبيق التنقل الأفضل في منطقتك. حمل التطبيق الآن وانطلق.",
+<<<<<<< HEAD
     images: ["/icons/og-banner.png"],
   },
 
   /* Robots and Canonical Links */
+=======
+    images: ["https://drobi.sa/icons/og-banner.png"], 
+  },  /* Robots and Canonical Links */
+>>>>>>> d30f67ef6716a38b31b71016582967a3a1d25d31
   robots: {
     index: true,
     follow: true,
