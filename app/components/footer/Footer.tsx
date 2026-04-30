@@ -10,27 +10,17 @@ import {
   CONTACT_INFO,
 } from "@/app/data/FooterData";
 import { FooterButton, FooterLinkList } from "./FooterElements";
-import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+
 /**
  * Footer Component
- * The structural foundation of the Drobi platform UI.
- * Features:
- * - High-Impact CTA: A dedicated conversion zone with a vibrant brand gradient.
- * - Multi-Column Navigation: Organizes links, social media, and contact data using a 10-column grid on desktop.
- * - Branding and Social Integration: Features optimized logo rendering and interactive social media iconography.
- * - Localization: Supports RTL layout for Arabic content while maintaining LTR for specific data.
- * - Legal Compliance: Displays clickable Commercial Registration and Tax numbers linked to official PDF certificates safely using English filenames.
- * - Interactive Contact: Includes copy-to-clipboard functionality with a modern inline UI feedback for email links.
- * @component
  */
 export default function Footer() {
   const pathname = usePathname();
   const [isEmailCopied, setIsEmailCopied] = useState(false);
+  const router = useRouter();
 
   const isCaptainPage = pathname?.includes("/captain");
-
-  const router = useRouter();
 
   const handleNavigation = (e: React.MouseEvent, type: "home" | "captain") => {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -46,6 +36,7 @@ export default function Footer() {
       }
     }
   };
+
   const handleEmailCopy = (href: string, text: string) => {
     if (href.startsWith("mailto:")) {
       navigator.clipboard.writeText(text);
@@ -58,7 +49,7 @@ export default function Footer() {
 
   return (
     <footer className="w-full" dir="rtl">
-      {/* 1. Upper Section: Call to Action (CTA) */}
+      {/* 1. Upper Section: CTA */}
       <div
         className="flex flex-col items-center justify-center mx-auto gap-8 py-12 px-2 text-center"
         style={{
@@ -80,7 +71,6 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Action Triggers */}
         <div className="flex flex-row items-center justify-center gap-2 md:gap-4 w-full px-4">
           {isCaptainPage ? (
             <>
@@ -113,7 +103,8 @@ export default function Footer() {
           )}
         </div>
       </div>
-      {/* 2. Bottom Section: Master Navigation */}
+
+      {/* 2. Bottom Section: Navigation */}
       <div
         className="w-full text-white pt-12 pb-8"
         style={{
@@ -123,21 +114,20 @@ export default function Footer() {
       >
         <div className="container mx-auto px-4 lg:px-3">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-10 gap-10 lg:gap-12 mb-12">
-            {/* Column 1: Branding and Social Presence */}
+            {/* Column 1: Branding */}
             <div className="lg:col-span-3 flex flex-col lg:gap-20 gap-6 items-center lg:items-start order-1 mb-4 lg:mb-0">
               <Image
                 src="/images/drobi-logo.svg"
-                alt="Drobi Brand Logo"
+                alt="Drobi Logo"
                 width={215}
                 height={88}
-                className="mb-2 w-45 lg:w-53.75 h-auto"
+                className="w-45 lg:w-53.75 h-auto"
               />
               <div className="flex items-center gap-2">
                 {SOCIAL_MEDIA.map((icon) => (
                   <Link
                     key={icon.name}
                     href={icon.href}
-                    rel="noopener noreferrer"
                     target="_blank"
                     className="group w-10 h-10 bg-[#1D124C] rounded-full flex items-center justify-center transition-all hover:bg-[#26095E] hover:scale-110"
                   >
@@ -158,12 +148,12 @@ export default function Footer() {
               <FooterLinkList title="روابط سريعة" links={QUICK_LINKS} />
             </div>
 
-            {/* Column 3: Legal Compliance */}
+            {/* Column 3: Legal */}
             <div className="lg:col-span-2 order-3 text-right">
               <FooterLinkList title="روابط قانونية" links={LEGAL_LINKS} />
             </div>
 
-            {/* Column 4: Direct Contact */}
+            {/* Column 4: Contact */}
             <div className="lg:col-span-3 order-4 text-right">
               <h3 className="font-bold text-xl mb-6 text-white">تواصل معنا</h3>
               <ul className="space-y-4 font-normal text-white/80">
@@ -178,46 +168,16 @@ export default function Footer() {
                       width={20}
                       height={20}
                     />
-
-<<<<<<< HEAD
                     {info.href ? (
                       <div className="flex items-center gap-2">
                         <a
                           href={info.href}
-                          rel="noopener noreferrer"
-                          target="_blank"
-=======
-                      {info.href ? (
-                        <div className="flex items-center gap-2">
-                          <a
-                            href={info.href}
-                             rel="noopener noreferrer"
-                              target="_blank"
-                            dir={info.isLtr ? "ltr" : "rtl"}
-                            onClick={() =>
-                              handleEmailCopy(info.href, info.text)
-                            }
-                            className="text-sm font-normal hover:text-white transition-colors duration-300 cursor-pointer"
-                          >
-                            {info.text}
-                          </a>
-
-                          {info.href.startsWith("mailto:") && isEmailCopied && (
-                            <span className="text-[10px] bg-white text-[#26095E] px-2 py-0.5 rounded-full font-bold animate-pulse">
-                              تم النسخ ✔
-                            </span>
-                          )}
-                        </div>
-                      ) : (
-                        <span
->>>>>>> d30f67ef6716a38b31b71016582967a3a1d25d31
                           dir={info.isLtr ? "ltr" : "rtl"}
                           onClick={() => handleEmailCopy(info.href, info.text)}
                           className="text-sm font-normal hover:text-white transition-colors duration-300 cursor-pointer"
                         >
                           {info.text}
                         </a>
-
                         {info.href.startsWith("mailto:") && isEmailCopied && (
                           <span className="text-[10px] bg-white text-[#26095E] px-2 py-0.5 rounded-full font-bold animate-pulse">
                             تم النسخ ✔
@@ -238,34 +198,25 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* 3. Legal, Registration, and Copyright Bar */}
+          {/* 3. Legal Bar */}
           <div className="pt-8 border-t border-white/10 flex flex-col lg:flex-row items-center justify-between text-white/40 text-sm font-normal gap-4">
-            {/* Downloadable Certificates Links */}
             <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-center">
               <a
                 href="/شهادة_السجل_التجاري.pdf"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition-colors duration-300"
-                aria-label="View Commercial Registration Certificate"
+                className="hover:text-white transition-colors"
               >
                 السجل التجاري: 7051511736
               </a>
-
               <span className="hidden md:block">|</span>
-
               <a
                 href="/الشهادة_الضريبة.pdf"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition-colors duration-300"
-                aria-label="View VAT Registration Certificate"
+                className="hover:text-white transition-colors"
               >
                 الرقم الضريبي: 314199310700003
               </a>
             </div>
-
-            {/* Copyright */}
             <div dir="ltr" className="text-center">
               <p>© 2026 Drobi. جميع الحقوق محفوظة</p>
             </div>
