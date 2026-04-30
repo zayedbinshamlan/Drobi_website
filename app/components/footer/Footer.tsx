@@ -174,6 +174,8 @@ export default function Footer() {
                           href={info.href}
                           dir={info.isLtr ? "ltr" : "rtl"}
                           onClick={() => handleEmailCopy(info.href, info.text)}
+                          rel="noopener noreferrer"
+                          target="_blank"
                           className="text-sm font-normal hover:text-white transition-colors duration-300 cursor-pointer"
                         >
                           {info.text}
