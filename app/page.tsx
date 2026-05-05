@@ -9,8 +9,8 @@ export default function Page() {
     name: "دروبي",
     alternateName: "Drobi",
 
-    url: "https://drobi-sa.com",
-    image: "https://drobi-sa.com/icons/favicon-96x96.png",
+    url: "https://drobi.sa",
+    image: "https://drobi.sa/icons/favicon-96x96.png",
 
     description:
       "تطبيق دروبي للتوصيل والمشاوير في السعودية. احجز مشوارك الآن بسرعة وأمان مع أفضل السائقين في منطقتك.",
@@ -30,7 +30,7 @@ export default function Page() {
       name: "Drobi",
       logo: {
         "@type": "ImageObject",
-        url: "https://drobi-sa.com/icons/favicon-96x96.png",
+        url: "https://drobi.sa/icons/favicon-96x96.png",
       },
     },
 
