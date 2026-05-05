@@ -7,6 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://drobi.sa/sitemap.xml',
+    // تحديث الرابط هنا ليتطابق مع الـ Sitemap والكونسول
+    sitemap: 'https://www.drobi.sa/sitemap.xml',
   };
 }

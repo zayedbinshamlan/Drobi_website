@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://drobi.sa';
+  // أضف www هنا ليتطابق مع إعدادات Google Search Console الخاصة بك
+  const baseUrl = 'https://www.drobi.sa';
 
   return [
     {
