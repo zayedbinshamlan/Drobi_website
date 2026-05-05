@@ -25,10 +25,8 @@ interface NavbarActionsProps {
  * @returns {JSX.Element} The rendered action buttons (Login & Start Journey).
  */
 const NavbarActions = ({ isMobile }: NavbarActionsProps) => {
-  // قراءة المسار الحالي لتحديد وجهة التطبيق ديناميكياً
   const pathname = usePathname();
-  const isCaptainPage = pathname?.includes("/captain");
-  const currentType = isCaptainPage ? "captain" : "home";
+  const currentType = pathname?.startsWith("/captain") ? "captain" : "home";
 
   /* =========================================
      1. Mobile Layout Logic
@@ -70,7 +68,11 @@ const NavbarActions = ({ isMobile }: NavbarActionsProps) => {
       {/* Desktop Start Journey Button: Ghost-style button with semi-transparent border */}
       <ActionButton
         label="ابدأ رحلتك الآن"
-        href="#download-section"
+        href={
+          pathname === "/" || pathname === "/captain"
+            ? "#download-section"
+            : "/#download-section"
+        }
         variant="glass"
         isDownloadLink={true}
         type={currentType}
