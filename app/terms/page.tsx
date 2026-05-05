@@ -4,6 +4,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { Suspense } from "react"; // استيراد Suspense
 import Rider from "../components/terms/Rider";
 import Driver from "../components/terms/Driver";
+import { Metadata } from "next";
 
 // 1. المكون الذي يحتوي على المنطق (Logic)
 function TermsContent() {
@@ -56,6 +57,19 @@ function TermsContent() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: "شروط الاستخدام - دروبي",
+  description:
+    "شروط وأحكام استخدام منصة دروبي للتوصيل داخل المملكة العربية السعودية، بما يشمل حقوق والتزامات المستخدمين والكباتن.",
+  keywords: [
+    "شروط الاستخدام دروبي",
+    "شروط وأحكام التوصيل",
+    "قوانين استخدام التطبيق",
+    "terms of service drobi",
+    "شروط الكباتن السعودية",
+  ],
+};
 
 // 2. المكون الرئيسي المغلف بـ Suspense
 export default function PrivacyPage() {

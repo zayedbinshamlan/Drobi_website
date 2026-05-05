@@ -4,6 +4,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { Suspense } from "react"; // استيراد Suspense
 import RiderPolicy from "../components/legal/RiderPolicy";
 import DriverPolicy from "../components/legal/DriverPolicy";
+import { Metadata } from "next";
 
 // 1. انقل كل المنطق إلى مكون فرعي جديد
 function PrivacyContent() {
@@ -56,6 +57,19 @@ function PrivacyContent() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: "سياسة الخصوصية - دروبي",
+  description:
+    "توضح سياسة الخصوصية في دروبي كيفية جمع واستخدام وحماية البيانات الشخصية للمستخدمين داخل المملكة العربية السعودية.",
+  keywords: [
+    "سياسة الخصوصية دروبي",
+    "حماية البيانات",
+    "خصوصية المستخدم",
+    "drobi privacy policy",
+    "بيانات المستخدم السعودية",
+  ],
+};
 
 export default function PrivacyPage() {
   return (
