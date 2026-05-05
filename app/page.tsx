@@ -1,5 +1,12 @@
 import Script from "next/script";
 import Home from "./Home/page";
+import { Metadata } from 'next'; //
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://www.drobi.sa",
+  },
+};
 
 export default function Page() {
   const jsonLd = {
