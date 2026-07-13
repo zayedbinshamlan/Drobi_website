@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { pushDownloadEvent } from "@/app/lib/tracking";
 
 /**
  * ActionButton Component - Drobi Platform
@@ -40,6 +41,7 @@ export const ActionButton = ({
     if (href.startsWith("#")) {
       e.preventDefault();
       if (isMobile && isDownloadLink) {
+        pushDownloadEvent(type);
         const timestamp = new Date().getTime();
         window.location.assign(`/api/download?type=${type}&t=${timestamp}`);
       } else {
@@ -49,6 +51,7 @@ export const ActionButton = ({
       }
     } else if (isDownloadLink && isMobile) {
       e.preventDefault();
+      pushDownloadEvent(type);
       const timestamp = new Date().getTime();
       window.location.assign(`${href}&t=${timestamp}`);
     }

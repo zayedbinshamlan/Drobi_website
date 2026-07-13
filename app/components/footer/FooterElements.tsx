@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { pushDownloadEvent } from "@/app/lib/tracking";
 
 /**
  * FooterButton Component - Drobi Platform
@@ -39,6 +40,8 @@ export const FooterButton = ({
         const type = window.location.pathname.includes("/captain")
           ? "captain"
           : "home";
+
+        pushDownloadEvent(type);
 
         // Magic Fix: Injecting a timestamp to ensure the URL is unique for every click event.
         const timestamp = new Date().getTime();
