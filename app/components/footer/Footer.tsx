@@ -83,7 +83,7 @@ export default function Footer() {
               <FooterButton
                 label="تحدّث معنا"
                 variant="outline"
-                href="https://wa.me/966558686141"
+                href="https://wa.me/966920018162"
               />
             </>
           ) : (
